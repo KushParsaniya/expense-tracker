@@ -1,8 +1,0 @@
-spring:
-  application:
-    name: expense-tracker
-
-  profiles:
-    active: dev
-
-# TODO : use flyway or liquibase migration
