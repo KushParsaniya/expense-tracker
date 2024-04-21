@@ -1,4 +1,4 @@
-package dev.kush.expensetracker.config.security;
+package dev.kush.expensetracker.config.security.dev;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @Profile("dev")
-public class SecurityConfigDev {
+public class DevSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

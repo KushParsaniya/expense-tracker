@@ -1,5 +1,6 @@
-package dev.kush.expensetracker.dtos;
+package dev.kush.expensetracker.dtos.impl;
 
+import dev.kush.expensetracker.dtos.ExpenseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

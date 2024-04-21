@@ -1,7 +1,7 @@
 package dev.kush.expensetracker.repos;
 
 import dev.kush.expensetracker.dtos.ExpenseDto;
-import dev.kush.expensetracker.models.Expense;
+import dev.kush.expensetracker.models.entities.Expense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

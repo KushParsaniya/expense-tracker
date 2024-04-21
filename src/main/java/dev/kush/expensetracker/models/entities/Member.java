@@ -1,4 +1,4 @@
-package dev.kush.expensetracker.models;
+package dev.kush.expensetracker.models.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,19 +12,20 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "members")
 public class Member {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id", nullable = false)
@@ -62,4 +63,14 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Expense> expenses;
 
+    public Member(String name, String email, String password, String phone, LocalDate createdAt, Role role, Boolean isLocked, Boolean isEnabled) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.createdAt = createdAt;
+        this.role = role;
+        this.isLocked = isLocked;
+        this.isEnabled = isEnabled;
+    }
 }

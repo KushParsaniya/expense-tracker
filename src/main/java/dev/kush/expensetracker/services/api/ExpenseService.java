@@ -1,4 +1,4 @@
-package dev.kush.expensetracker.services;
+package dev.kush.expensetracker.services.api;
 
 import dev.kush.expensetracker.dtos.ExpenseDto;
 import dev.kush.expensetracker.dtos.SaveExpenseDto;
@@ -20,7 +20,7 @@ public interface ExpenseService {
 
     ExpenseDto saveExpense(SaveExpenseDto saveExpenseDto);
 
-    ExpenseDto updateExpense(SaveExpenseDto saveExpenseDto);
+    ExpenseDto updateExpense(SaveExpenseDto saveExpenseDto, Integer expenseId);
 
     int deleteExpense(Integer expenseId);
 }

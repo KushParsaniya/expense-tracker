@@ -1,6 +1,6 @@
 package dev.kush.expensetracker.repos;
 
-import dev.kush.expensetracker.models.ExpenseType;
+import dev.kush.expensetracker.models.entities.ExpenseType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
