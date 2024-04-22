@@ -1,1 +1,2 @@
-
+# TODO: Add cloud DB connection details
+# TODO : use flyway or liquibase migration tool to manage DB schema changes

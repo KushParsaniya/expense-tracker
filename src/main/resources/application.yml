@@ -1,9 +1,12 @@
 spring:
   application:
     name: expense-tracker
-
   profiles:
     active: prod
+  jpa:
+    show-sql: true
+
+# mail service
   mail:
     host: ${env.MAIL_HOST}
     port: ${env.MAIL_PORT}
@@ -15,9 +18,20 @@ spring:
           auth: true
           starttls:
             enable: true
-  jpa:
-    show-sql: true
-
 mail:
   url: ${env.MAIL_URL}
-# TODO : use flyway or liquibase migration
+
+# for digitalocean
+aws:
+  s3:
+    region: ${env.AWS_S3_REGION}
+    access-key: ${env.AWS_S3_BUCKET}
+    secret-key: ${env.AWS_S3_SECRET_KEY}
+    url: ${env.AWS_S3_URL}
+# for digitalocean custom properties
+do:
+  s3:
+    url: ${env.DO_S3_URL}
+    region: ${env.DO_S3_REGION}
+
+
