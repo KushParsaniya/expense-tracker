@@ -1,0 +1,17 @@
+spring:
+  mail:
+    host: ${env.MAIL_HOST}
+    port: ${env.MAIL_PORT}
+    username: ${env.MAIL_USER}
+    password: ${env.MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  jpa:
+    show-sql: true
+
+mail:
+  url: ${env.MAIL_URL}
