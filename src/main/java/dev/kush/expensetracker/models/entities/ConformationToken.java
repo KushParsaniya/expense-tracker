@@ -45,7 +45,6 @@ public class ConformationToken {
     private Member member;
 
 
-
     public ConformationToken(String token, LocalDateTime createdAt, LocalDateTime expiredAt, LocalDateTime confirmedAt, Member member) {
         this.token = token;
         this.createdAt = createdAt;

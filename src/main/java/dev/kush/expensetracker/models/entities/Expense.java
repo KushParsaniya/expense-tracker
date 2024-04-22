@@ -45,11 +45,11 @@ public class Expense {
     @Column(name = "created_time")
     private LocalTime createdTime;
 
-    @ManyToOne(cascade = {PERSIST,MERGE})
+    @ManyToOne(cascade = {PERSIST, MERGE})
     @JoinColumn(name = "expense_type_id")
     private ExpenseType expenseType;
 
-    @ManyToOne(cascade = {PERSIST,MERGE})
+    @ManyToOne(cascade = {PERSIST, MERGE})
     @JoinColumn(name = "member_id")
     private Member member;
 

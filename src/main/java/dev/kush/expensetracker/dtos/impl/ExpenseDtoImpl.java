@@ -1,6 +1,6 @@
 package dev.kush.expensetracker.dtos.impl;
 
-import dev.kush.expensetracker.dtos.ExpenseDto;
+import dev.kush.expensetracker.dtos.api.ExpenseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

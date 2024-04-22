@@ -1,4 +1,4 @@
-package dev.kush.expensetracker.dtos;
+package dev.kush.expensetracker.dtos.api;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

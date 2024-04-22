@@ -25,19 +25,19 @@ public class MailServiceImpl implements MailService {
     @Override
     public ResponseEntity<String> sendEmail(EmailDetails emailDetails) throws Exception {
 
-            MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessage message = javaMailSender.createMimeMessage();
 
-            MimeMessageHelper helper = new MimeMessageHelper(message);
+        MimeMessageHelper helper = new MimeMessageHelper(message);
 
-            helper.setFrom(sender);
-            helper.setTo(emailDetails.recipient());
-            helper.setSubject(emailDetails.subject());
-            helper.setSentDate(new Date());
-            helper.setText(emailDetails.msgBody(), true);
+        helper.setFrom(sender);
+        helper.setTo(emailDetails.recipient());
+        helper.setSubject(emailDetails.subject());
+        helper.setSentDate(new Date());
+        helper.setText(emailDetails.msgBody(), true);
 
-            javaMailSender.send(message);
+        javaMailSender.send(message);
 
-            return new ResponseEntity<>("Successfully sent mail",HttpStatus.OK);
+        return new ResponseEntity<>("Successfully sent mail", HttpStatus.OK);
 
     }
 }

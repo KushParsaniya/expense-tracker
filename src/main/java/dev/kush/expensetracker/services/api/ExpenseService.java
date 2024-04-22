@@ -1,7 +1,7 @@
 package dev.kush.expensetracker.services.api;
 
-import dev.kush.expensetracker.dtos.ExpenseDto;
 import dev.kush.expensetracker.dtos.SaveExpenseDto;
+import dev.kush.expensetracker.dtos.api.ExpenseDto;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,7 +1,7 @@
 package dev.kush.expensetracker.services.impl;
 
-import dev.kush.expensetracker.dtos.ExpenseDto;
 import dev.kush.expensetracker.dtos.SaveExpenseDto;
+import dev.kush.expensetracker.dtos.api.ExpenseDto;
 import dev.kush.expensetracker.mapper.ExpenseMapper;
 import dev.kush.expensetracker.models.entities.Expense;
 import dev.kush.expensetracker.repos.ExpenseRepository;

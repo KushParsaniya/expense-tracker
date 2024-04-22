@@ -12,4 +12,5 @@ public interface SignUpMemberService {
 
     String conformToken(String token);
 
+    String signIn(String base64Encode);
 }

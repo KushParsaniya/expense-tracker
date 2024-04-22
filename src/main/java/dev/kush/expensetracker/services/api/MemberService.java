@@ -1,7 +1,6 @@
 package dev.kush.expensetracker.services.api;
 
-import dev.kush.expensetracker.dtos.MemberDto;
-import dev.kush.expensetracker.dtos.SignUpDto;
+import dev.kush.expensetracker.dtos.api.MemberDto;
 
 public interface MemberService {
 

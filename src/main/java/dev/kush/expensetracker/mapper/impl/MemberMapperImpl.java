@@ -1,7 +1,7 @@
 package dev.kush.expensetracker.mapper.impl;
 
-import dev.kush.expensetracker.dtos.MemberDto;
 import dev.kush.expensetracker.dtos.SignUpDto;
+import dev.kush.expensetracker.dtos.api.MemberDto;
 import dev.kush.expensetracker.dtos.impl.MemberDtoImpl;
 import dev.kush.expensetracker.mapper.MemberMapper;
 import dev.kush.expensetracker.models.entities.Member;

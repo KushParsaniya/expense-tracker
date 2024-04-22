@@ -15,8 +15,8 @@ public class DevSecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(
-                req -> req.anyRequest().permitAll()
-        )
+                        req -> req.anyRequest().permitAll()
+                )
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }

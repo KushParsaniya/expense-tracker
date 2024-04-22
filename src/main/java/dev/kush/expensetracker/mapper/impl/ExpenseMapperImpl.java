@@ -1,7 +1,7 @@
 package dev.kush.expensetracker.mapper.impl;
 
-import dev.kush.expensetracker.dtos.ExpenseDto;
 import dev.kush.expensetracker.dtos.SaveExpenseDto;
+import dev.kush.expensetracker.dtos.api.ExpenseDto;
 import dev.kush.expensetracker.dtos.impl.ExpenseDtoImpl;
 import dev.kush.expensetracker.mapper.ExpenseMapper;
 import dev.kush.expensetracker.models.entities.Expense;
@@ -38,8 +38,8 @@ public class ExpenseMapperImpl implements ExpenseMapper {
 
     @Override
     public ExpenseDto mapExpenseToExpenseDto(Expense expense) {
-        return new ExpenseDtoImpl(expense.getExpenseId(),expense.getAmount(),
-                expense.getDescription(),expense.getCreatedDate(),
-                expense.getExpenseType().getTypeName(),expense.getCreatedTime());
+        return new ExpenseDtoImpl(expense.getExpenseId(), expense.getAmount(),
+                expense.getDescription(), expense.getCreatedDate(),
+                expense.getExpenseType().getTypeName(), expense.getCreatedTime());
     }
 }

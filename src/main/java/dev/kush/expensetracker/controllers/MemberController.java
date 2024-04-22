@@ -1,15 +1,12 @@
 package dev.kush.expensetracker.controllers;
 
 import dev.kush.expensetracker.dtos.ResponseDto;
-import dev.kush.expensetracker.dtos.SignUpDto;
 import dev.kush.expensetracker.services.api.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +19,8 @@ import java.util.Objects;
 public class MemberController {
 
     private final MemberService memberService;
-    
-    private static final String ERROR_MESSAGE = "error";
 
+    private static final String ERROR_MESSAGE = "error";
 
 
     @GetMapping("/email")

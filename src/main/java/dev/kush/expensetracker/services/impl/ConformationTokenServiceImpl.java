@@ -36,6 +36,6 @@ public class ConformationTokenServiceImpl implements ConformationTokenService {
 
     @Override
     public int setConformedAt(String token) {
-        return conformationTokenRepository.updateConformationTokenAtByToken(LocalDateTime.now(),token);
+        return conformationTokenRepository.updateConformationTokenAtByToken(LocalDateTime.now(), token);
     }
 }

@@ -1,13 +1,12 @@
 package dev.kush.expensetracker.services.impl;
 
-import dev.kush.expensetracker.dtos.MemberDto;
+import dev.kush.expensetracker.dtos.api.MemberDto;
 import dev.kush.expensetracker.mapper.MemberMapper;
 import dev.kush.expensetracker.repos.MemberRepository;
 import dev.kush.expensetracker.services.api.MemberService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
