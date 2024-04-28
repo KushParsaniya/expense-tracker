@@ -17,7 +17,7 @@ public class Base64EncodedImpl implements Base64Service {
         String decodedString = new String(decodedBytes, StandardCharsets.UTF_8);
         String[] splitedString = decodedString.split(":");
 
-        if (splitedString.length > 2) {
+        if (splitedString.length == 2) {
             return new AuthenticationDto(splitedString[0], splitedString[1]);
         } else {
             throw new IllegalArgumentException("Invalid base64 encode String");

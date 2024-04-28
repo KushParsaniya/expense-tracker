@@ -1,6 +1,8 @@
 package dev.kush.expensetracker.controllers;
 
+import dev.kush.expensetracker.constants.ErrorMessageConstants;
 import dev.kush.expensetracker.dtos.ResponseDto;
+import dev.kush.expensetracker.dtos.SignInDto;
 import dev.kush.expensetracker.dtos.SignUpDto;
 import dev.kush.expensetracker.services.api.SignUpMemberService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +23,7 @@ public class SignUpMemberController {
 
     private final SignUpMemberService signUpMemberService;
 
-    @PostMapping
+    @PostMapping("/sign-up")
     public ResponseDto saveMember(@RequestBody SignUpDto signUpDto) {
         var memberDto = signUpMemberService.signUp(signUpDto);
 
@@ -31,12 +33,19 @@ public class SignUpMemberController {
                     HttpStatus.CONFLICT.value());
         }
 
-        return new ResponseDto("ok", memberDto, HttpStatus.CREATED.value());
+        return new ResponseDto(ErrorMessageConstants.OK_MESSAGE, memberDto, HttpStatus.CREATED.value());
     }
 
     @GetMapping("/conform")
     public String conformToken(@RequestParam String token) {
         return signUpMemberService.conformToken(token);
     }
+
+    @PostMapping("/sign-in")
+    public String signIn(@RequestBody SignInDto signInDto) {
+        return signUpMemberService.signIn(signInDto.base64Encoded());
+
+    }
+
 
 }

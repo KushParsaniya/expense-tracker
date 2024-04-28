@@ -1,5 +1,6 @@
 package dev.kush.expensetracker.controllers;
 
+import dev.kush.expensetracker.constants.ErrorMessageConstants;
 import dev.kush.expensetracker.dtos.ResponseDto;
 import dev.kush.expensetracker.services.api.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +21,13 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    private static final String ERROR_MESSAGE = "error";
-
 
     @GetMapping("/email")
     public ResponseDto findMemberByEmail(@RequestParam String email) {
         var memberDto = memberService.findMemberByEmail(email);
 
         if (Objects.isNull(memberDto)) {
-            return new ResponseDto(ERROR_MESSAGE,
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE,
                     "Member not found with email: " + email,
                     HttpStatus.NOT_FOUND.value());
         }
@@ -42,7 +41,7 @@ public class MemberController {
         var memberDto = memberService.findMemberByMemberId(memberId);
 
         if (Objects.isNull(memberDto)) {
-            return new ResponseDto(ERROR_MESSAGE,
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE,
                     "Member not found with id: " + memberId,
                     HttpStatus.NOT_FOUND.value());
         }
@@ -55,7 +54,7 @@ public class MemberController {
         var rowsDeleted = memberService.deleteMemberByEmail(email);
 
         if (rowsDeleted == 0) {
-            return new ResponseDto(ERROR_MESSAGE,
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE,
                     "Member not found with email: " + email,
                     HttpStatus.NOT_FOUND.value());
         }
@@ -68,11 +67,11 @@ public class MemberController {
         var rowsDeleted = memberService.deleteMemberByMemberId(memberId);
 
         if (rowsDeleted == 0) {
-            return new ResponseDto(ERROR_MESSAGE,
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE,
                     "Member not found with id: " + memberId,
                     HttpStatus.NOT_FOUND.value());
         }
-        return new ResponseDto("ok",
+        return new ResponseDto(ErrorMessageConstants.OK_MESSAGE,
                 "Member deleted successfully with id: " + memberId, HttpStatus.OK.value());
     }
 

@@ -2,7 +2,7 @@ spring:
   application:
     name: expense-tracker
   profiles:
-    active: prod
+    active: dev
   jpa:
     show-sql: true
 

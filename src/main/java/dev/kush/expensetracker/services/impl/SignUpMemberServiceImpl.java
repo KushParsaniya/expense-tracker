@@ -122,7 +122,7 @@ public class SignUpMemberServiceImpl implements SignUpMemberService {
         try {
             AuthenticationDto authenticationDto = base64Service.decode(base64Encode);
             Authentication authenticatedToken = authenticateUser(authenticationDto);
-            return generateToken(authenticatedToken);
+            return generateToken(authenticatedToken.getName());
         } catch (AuthenticationException e) {
             log.error("Authentication failed : {}", e.getMessage());
             return "Authentication failed : " + e.getMessage();
@@ -140,7 +140,7 @@ public class SignUpMemberServiceImpl implements SignUpMemberService {
         return authenticatedToken;
     }
 
-    private String generateToken(Authentication authenticatedToken) {
-        return jwtService.generateToken(authenticatedToken.getPrincipal().toString());
+    private String generateToken(String username) {
+        return jwtService.generateToken(username);
     }
 }
