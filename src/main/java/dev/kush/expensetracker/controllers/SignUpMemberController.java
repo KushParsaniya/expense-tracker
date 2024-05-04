@@ -28,7 +28,7 @@ public class SignUpMemberController {
         var memberDto = signUpMemberService.signUp(signUpDto);
 
         if (Objects.isNull(memberDto)) {
-            return new ResponseDto("error",
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE,
                     "Member already exists with email: " + signUpDto.email(),
                     HttpStatus.CONFLICT.value());
         }
@@ -42,7 +42,7 @@ public class SignUpMemberController {
     }
 
     @PostMapping("/sign-in")
-    public String signIn(@RequestBody SignInDto signInDto) {
+    public ResponseDto signIn(@RequestBody SignInDto signInDto) {
         return signUpMemberService.signIn(signInDto.base64Encoded());
 
     }

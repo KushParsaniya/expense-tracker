@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("prod")
+@Profile("dev")
 public class DigitalOceanConfig {
 
     @Value("${aws.s3.access-key}")

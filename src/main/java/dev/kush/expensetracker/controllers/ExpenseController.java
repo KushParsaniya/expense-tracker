@@ -34,14 +34,14 @@ public class ExpenseController {
         return new ResponseDto("ok", expenseService.findAllExpensesByMemberEmail(email), 200);
     }
 
-    @GetMapping("/member/{memberId}/date")
-    public ResponseDto findAllExpensesByMemberIdAndDateRange(@PathVariable Integer memberId,
+    @GetMapping("/member/id/date/")
+    public ResponseDto findAllExpensesByMemberIdAndDateRange(@RequestParam Integer memberId,
                                                              @RequestParam LocalDate startDate,
                                                              @RequestParam LocalDate endDate) {
         return new ResponseDto("ok", expenseService.findAllExpensesByMemberIdAndDateRange(memberId, startDate, endDate), 200);
     }
 
-    @GetMapping("/member/date")
+    @GetMapping("/member/email/date")
     public ResponseDto findAllExpensesByMemberEmailAndDateRange(@RequestParam String email,
                                                                 @RequestParam LocalDate startDate,
                                                                 @RequestParam LocalDate endDate) {

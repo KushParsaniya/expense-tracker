@@ -1,8 +1,12 @@
 package dev.kush.expensetracker.services.impl;
 
 import dev.kush.expensetracker.config.security.jwt.JwtService;
+import dev.kush.expensetracker.constants.ErrorMessageConstants;
 import dev.kush.expensetracker.dtos.AuthenticationDto;
+import dev.kush.expensetracker.dtos.LoginResponse;
+import dev.kush.expensetracker.dtos.ResponseDto;
 import dev.kush.expensetracker.dtos.SignUpDto;
+import dev.kush.expensetracker.dtos.api.ExpenseDto;
 import dev.kush.expensetracker.mapper.MemberMapper;
 import dev.kush.expensetracker.models.EmailDetails;
 import dev.kush.expensetracker.models.entities.ConformationToken;
@@ -10,12 +14,14 @@ import dev.kush.expensetracker.models.entities.Member;
 import dev.kush.expensetracker.repos.MemberRepository;
 import dev.kush.expensetracker.services.api.Base64Service;
 import dev.kush.expensetracker.services.api.ConformationTokenService;
+import dev.kush.expensetracker.services.api.ExpenseService;
 import dev.kush.expensetracker.services.api.MailService;
 import dev.kush.expensetracker.services.api.SignUpMemberService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +30,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +40,8 @@ public class SignUpMemberServiceImpl implements SignUpMemberService {
     private final MemberRepository memberRepository;
 
     private final MemberMapper memberMapper;
+
+    private final ExpenseService expenseService;
 
     private final ConformationTokenService conformationTokenService;
 
@@ -118,17 +127,20 @@ public class SignUpMemberServiceImpl implements SignUpMemberService {
     }
 
     @Override
-    public String signIn(String base64Encode) {
+    public ResponseDto signIn(String base64Encode) {
         try {
             AuthenticationDto authenticationDto = base64Service.decode(base64Encode);
             Authentication authenticatedToken = authenticateUser(authenticationDto);
-            return generateToken(authenticatedToken.getName());
+            List<ExpenseDto> expenseDtos = expenseService.findAllExpensesByMemberEmail(authenticationDto.email());
+            return new ResponseDto(ErrorMessageConstants.OK_MESSAGE,
+                    new LoginResponse(generateToken(authenticatedToken.getName()), expenseDtos),
+                    HttpStatus.OK.value());
         } catch (AuthenticationException e) {
             log.error("Authentication failed : {}", e.getMessage());
-            return "Authentication failed : " + e.getMessage();
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE, "Authentication failed : " + e.getMessage(), HttpStatus.UNAUTHORIZED.value());
         } catch (Exception e) {
             log.error(e.getMessage());
-            return e.getMessage();
+            return new ResponseDto(ErrorMessageConstants.ERROR_MESSAGE, e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
     }
 

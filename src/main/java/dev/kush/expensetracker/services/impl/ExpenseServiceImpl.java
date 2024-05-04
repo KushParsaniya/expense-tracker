@@ -29,6 +29,8 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseDto> findAllExpensesByMemberId(Integer memberId) {
+
+
         return expenseRepository.findAllExpensesByMemberId(memberId);
     }
 

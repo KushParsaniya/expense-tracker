@@ -1,5 +1,6 @@
 package dev.kush.expensetracker.services.api;
 
+import dev.kush.expensetracker.dtos.ResponseDto;
 import dev.kush.expensetracker.dtos.SignUpDto;
 
 public interface SignUpMemberService {
@@ -12,5 +13,5 @@ public interface SignUpMemberService {
 
     String conformToken(String token);
 
-    String signIn(String base64Encode);
+    ResponseDto signIn(String base64Encode);
 }
